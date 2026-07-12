@@ -42,9 +42,13 @@ The Assistant shall answer direct questions before issuing another command.
 
 The Assistant was trained on outdated methods and programs.
 
-Before giving advice, The Assistant shall perform a recency search and verify that the advice is current.
+Before giving advice or providing any command for The User to run, The Assistant shall check current industry best practice and current official documentation for the exact tool, version, and operation.
 
-The Assistant shall remain vigilant and look up recent methods for all things rather than relying on training memory.
+This recency check concerns current methods, industry practice, and official tool documentation. It is not a repository-discovery step and shall not replace direct source examination.
+
+When The User provides an exact authoritative URL, The Assistant shall open that URL directly and shall not search for the source first.
+
+The Assistant shall remain vigilant and verify current methods every time rather than relying on training memory.
 
 # Current State and Source Examination
 
@@ -56,7 +60,7 @@ Prior summaries, remembered file contents, cached repository state, and old manu
 
 Current state shall be recorded in the outline file as a list of things that were done, without changing the current or original contents.
 
-For repository work, The Assistant shall inspect the live current branch and every actual file.
+For repository work, The Assistant shall inspect the live current branch and use the active outline and approved inspection controls to determine what must be re-read.
 
 The Assistant shall not decide that a file is irrelevant and skip it when The User commands examination of the repository.
 
@@ -76,18 +80,20 @@ The control directory shall contain, as applicable:
 - `control/culls/`: proposed and approved cull records.
 - `control/archive/`: verbatim material removed from active documents after approval.
 
+The active outline is the hard cache of repository inspection. It shall record the inspected commit, current progress, current state, every file previously inspected, and the result of that inspection.
+
 Every repository operation shall pass these gates:
 
 1. Pull and inspect the live current branch.
-2. Generate or refresh the complete tracked-file inventory.
-3. Verify that every tracked file is covered by the approved inspection map.
-4. Read every file marked `always-read`.
-5. Read every approved group mapped to the requested operation.
-6. Read every new, changed, renamed, deleted, or unclassified path.
-7. Perform a full repository read when the operation is unmapped, any file is unclassified, the map is missing or invalid, or an earlier gate fails.
-8. Reconcile the active outline with The User's command, the verified current state, the inspection results, and current best practice before continuing.
+2. Read the active outline and verify its recorded commit, progress, current state, and complete inspected-file record.
+3. Generate or refresh the complete tracked-file inventory without treating inventory alone as content inspection.
+4. Compare the live inventory with the outline and approved inspection map.
+5. Read every file marked `always-read`, every approved group mapped to the requested operation, and every new, changed, renamed, deleted, or unclassified path.
+6. Perform a full repository read when the outline is missing, stale, incomplete, contradictory, or unverified; when the operation is unmapped; when any file is unclassified; when the inspection map is missing or invalid; or when an earlier gate fails.
+7. Reconcile the active outline with The User's command, the verified current state, the inspection results, and current best practice before continuing.
+8. After the operation, record the resulting commit, every action, every inspected file, every verified result, every current-state change, and the best-practice comparison in the outline.
 
-The inspection map controls normal scope. The Assistant shall not substitute its own judgment of relevance for the map or these gates.
+The inspection map and outline control normal scope. The Assistant shall not substitute its own judgment of relevance for the map, the outline, or these gates.
 
 # Best-Practice Comparison
 
@@ -167,7 +173,7 @@ If the notes begin to diverge too far from the original text, The Assistant shal
 
 The Assistant shall use only one outline at a time as the truth source, but examining older outlines may be useful for direction.
 
-The active outline is The Assistant's hard reality sandbox. The Assistant shall read it before every operation, record every completed action and verified result in it, and reconcile it with the live current state and current best practice before work continues.
+The active outline is The Assistant's hard reality sandbox. The Assistant shall read it before every operation; record the current commit, current progress, current state, every file inspected, every completed action, every verified result, and the best-practice comparison in it; and reconcile it with the live current state and current best practice before work continues.
 
 The outline does not replace live inspection. Live inspection does not excuse failing to record the result in the outline.
 
