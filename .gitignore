@@ -1,0 +1,21 @@
+# Generated repository-inspection state
+/control/file-inventory.csv
+/control/unclassified-files.txt
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak

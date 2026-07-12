@@ -1,0 +1,40 @@
+name: Rule or supporting-file proposal
+description: Propose a clear improvement without silently changing BADASS authority or intent.
+title: "[PROPOSAL] "
+labels:
+  - proposal
+body:
+  - type: input
+    id: path
+    attributes:
+      label: File and section
+      placeholder: docs/SECTION-COMPLIANCE-MATRIX.md — Script Safety
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current language or behavior
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and direct evidence
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Smallest proposed change
+    validations:
+      required: true
+  - type: checkboxes
+    id: authority
+    attributes:
+      label: Authority check
+      options:
+        - label: This proposal does not grant The Assistant additional authority.
+          required: true
+        - label: Any proposed BADASS.md edit requires The User's explicit exception.
+          required: true

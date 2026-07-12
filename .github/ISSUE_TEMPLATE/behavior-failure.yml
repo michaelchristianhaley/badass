@@ -1,0 +1,48 @@
+name: Behavior failure
+description: Record a HARD FAIL, Thrash, Drift, unsupported claim, or other BADASS violation.
+title: "[FAIL] "
+labels:
+  - behavior-failure
+body:
+  - type: dropdown
+    id: failure
+    attributes:
+      label: Failure type
+      options:
+        - HARD FAIL
+        - Thrash
+        - Drift
+        - Stale-state error
+        - Unsupported claim
+        - Untested script
+        - Unauthorized method change
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: exact
+    attributes:
+      label: Exact statement or action
+      description: Quote or describe the precise failure.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Direct evidence
+      description: Provide current files, commits, output, or authoritative URLs.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Downstream impact
+      description: Identify conclusions, commands, files, or decisions that may depend on the failure.
+    validations:
+      required: true
+  - type: textarea
+    id: repair
+    attributes:
+      label: Smallest proposed repair
+    validations:
+      required: true

@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "owner": "The User",
+  "fallback": {
+    "full_repository_read": true,
+    "conditions": [
+      "outline missing, stale, incomplete, contradictory, or unverified",
+      "operation unmapped",
+      "tracked file unclassified",
+      "inspection map missing or invalid",
+      "earlier inspection gate fails"
+    ]
+  },
+  "always_read": [
+    "BADASS.md",
+    "README.md",
+    "control/outline.md",
+    "control/inspection-map.yml",
+    "docs/SECTION-COMPLIANCE-MATRIX.md"
+  ],
+  "groups": {
+    "governance": [
+      "BADASS.md",
+      "README.md",
+      "docs/SECTION-COMPLIANCE-MATRIX.md",
+      "docs/RECOVERY-PROTOCOL.md"
+    ],
+    "controls": [
+      "control/**"
+    ],
+    "repository_health": [
+      ".gitattributes",
+      ".gitignore",
+      ".editorconfig",
+      ".github/**",
+      "CHANGELOG.md",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "SECURITY.md",
+      "SUPPORT.md",
+      "docs/REPOSITORY-HEALTH.md",
+      "scripts/**"
+    ],
+    "decisions": [
+      "control/decisions/**"
+    ],
+    "culls": [
+      "control/culls/**",
+      "control/archive/**"
+    ],
+    "community": [
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "SECURITY.md",
+      "SUPPORT.md",
+      ".github/ISSUE_TEMPLATE/**",
+      ".github/PULL_REQUEST_TEMPLATE.md",
+      ".github/CODEOWNERS"
+    ]
+  },
+  "operations": {
+    "assistant_recovery": [
+      "governance",
+      "controls",
+      "decisions"
+    ],
+    "governance_review": [
+      "governance",
+      "controls",
+      "decisions"
+    ],
+    "repository_maintenance": [
+      "governance",
+      "controls",
+      "repository_health"
+    ],
+    "cull": [
+      "governance",
+      "controls",
+      "culls",
+      "decisions"
+    ],
+    "contribution_review": [
+      "governance",
+      "controls",
+      "community"
+    ],
+    "security_review": [
+      "governance",
+      "controls",
+      "repository_health"
+    ]
+  },
+  "classification_patterns": [
+    "BADASS.md",
+    "README.md",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    ".gitattributes",
+    ".gitignore",
+    ".editorconfig",
+    ".github/**",
+    "docs/**",
+    "control/**",
+    "scripts/**"
+  ]
+}
