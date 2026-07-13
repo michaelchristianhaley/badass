@@ -2,6 +2,20 @@
 
 All notable repository changes are recorded here.
 
+## 2026-07-13 — Outline and wisdom model
+
+### Added
+
+* global `WISDOM.md` for deliberately promoted cross-project lessons.
+
+### Changed
+
+* made the active outline The Assistant's compact, human-readable working memory;
+* replaced append-only outline behavior with continuous culling and promotion;
+* distinguished temporary outline state, project wisdom, evidence, history, and governing rules;
+* loaded wisdom through native adapters and repository inspection controls;
+* advanced `BADASS.md` to version 1.4.0 under The User's explicit exception.
+
 ## 2026-07-12 — Claude report remediation
 
 ### Added

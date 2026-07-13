@@ -16,6 +16,7 @@
     "docs/QUICK-REFERENCE.md",
     "README.md",
     "control/outline.md",
+    "WISDOM.md",
     "control/inspection-map.json",
     "docs/SECTION-COMPLIANCE-MATRIX.md",
     "control/state.json",
@@ -24,6 +25,7 @@
   "groups": {
     "governance": [
       "BADASS.md",
+      "WISDOM.md",
       "README.md",
       "CLAUDE.md",
       "AGENTS.md",
@@ -115,6 +117,7 @@
   },
   "classification_patterns": [
     "BADASS.md",
+    "WISDOM.md",
     "README.md",
     "CLAUDE.md",
     "AGENTS.md",

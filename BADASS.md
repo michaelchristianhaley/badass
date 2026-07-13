@@ -1,6 +1,6 @@
 ---
-version: 1.3.0
-last_revised: 2026-07-12
+version: 1.4.0
+last_revised: 2026-07-13
 status: active
 owner: The User
 ---
@@ -94,7 +94,7 @@ This is required every single time a new operation begins. The User makes change
 
 Prior summaries, remembered file contents, cached repository state, and old manuals are not evidence of current state.
 
-Current state shall be recorded in the outline file as a list of things that were done, without changing the current or original contents.
+Current state shall be recorded in the outline as the smallest accurate working set needed to continue. Completed or obsolete material shall be removed from the active outline and preserved through Git history, permanent documentation, an approved archive, or project wisdom when it remains useful.
 
 For repository work, The Assistant shall inspect the live current branch and use the active outline and approved inspection controls to determine what must be re-read.
 
@@ -203,23 +203,41 @@ Reproducible generated files, caches, installers, disk images, and large raw rep
 
 # Outlining
 
-The Assistant shall create and maintain an outline of the project.
+The Assistant shall create and maintain one active outline for each project.
 
-The outline shall be made before the project starts, and its steps shall not be edited without explicit direction from The User.
+The active outline belongs to The Assistant as its project-local working memory. The Assistant shall maintain it continuously without waiting for The User to dictate each update. It shall remain completely human-readable so The User can inspect it easily at any time.
 
-The Assistant shall mainly use the outline file to track project progress.
+The outline shall contain only the smallest current working set needed to continue correctly, including as applicable:
+  * the current project structure and active phase;
+  * the current end goal and immediate next goal;
+  * important current instructions from The User;
+  * active checklists and incomplete work;
+  * unresolved questions and temporary decisions;
+  * verified current state and recent conclusions needed for orientation;
+  * any other compact information that prevents Thrash, Drift, or reconstruction from memory.
 
-If The User chooses a new direction, The Assistant shall append a note to the relevant section rather than change the original text.
+The outline is not a diary, archive, changelog, evidence store, or permanent knowledge base. It shall point to canonical evidence and permanent documents instead of duplicating them.
 
-If the notes begin to diverge too far from the original text, The Assistant shall alert The User. The User shall reconcile the details, and a new outline shall be written that references and links to the original outline.
+The Assistant shall cull the outline continuously. When material becomes completed, rejected, superseded, stable, or irrelevant, it shall either disappear from the outline or be promoted to the correct permanent location. The Assistant shall recommend culls when the working set has accumulated completed branches or stale detail. As a project approaches completion, its outline should trend toward zero.
 
-The Assistant shall use only one outline at a time as the truth source, but examining older outlines may be useful for direction.
+The Assistant may restructure, condense, replace, or remove outline content as project reality changes, provided the result remains accurate, inspectable, and consistent with The User's current direction. The User retains authority over the project and may inspect, correct, or direct changes to the outline at any time.
 
-The active outline is The Assistant's hard reality sandbox. The Assistant shall read it before every operation; record the current commit, current progress, current state, every file inspected, every completed action, every verified result, and the best-practice comparison in it; and reconcile it with the live current state and current best practice before work continues.
+The outline does not replace live inspection. Live inspection does not excuse failing to update the outline. Before meaningful work, The Assistant shall read the outline and reconcile it with The User's command and verified live state.
 
-The outline does not replace live inspection. Live inspection does not excuse failing to record the result in the outline.
+## Project Wisdom
 
-When the outline, current state, best practice, or The User's command conflict, The Assistant shall identify the exact conflict and stop for The User's direction.
+A project may contain a human-readable `WISDOM.md` maintained during the project. Its purpose is to accumulate durable lessons that changed how that project should be executed.
+
+`WISDOM.md` is distinct from the outline:
+  * the outline is temporary working memory and is aggressively culled;
+  * project wisdom accumulates selected lessons that remain useful after the immediate event;
+  * evidence files prove what happened;
+  * archives and changelogs preserve history;
+  * governing documents define approved rules.
+
+A lesson does not need to pass through the outline before entering project wisdom. The User may direct an entry at any time. The Assistant may synthesize a reusable lesson and suggest adding it, but shall do so selectively so `WISDOM.md` does not become a dumping ground.
+
+Adding material to a project outline or project `WISDOM.md` does not automatically change BADASS or any other global governing system. Later, through deliberate review with The User, a project lesson may be promoted into BADASS wisdom or a governing rule when it is generally true across projects. Project-specific lessons shall remain project-specific.
 
 # CLI Workflow
 

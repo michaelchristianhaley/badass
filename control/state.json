@@ -4,16 +4,16 @@
   "project": "BADASS",
   "branch": "main",
   "status": "active",
-  "updated": "2026-07-12",
+  "updated": "2026-07-13",
   "current_end_goal": "A current, inspectable repository that can stop a failing assistant, force direct rereading and evidence, identify the violated rules, repair downstream damage, and return the assistant to the user's actual project without Thrash, Drift, guessing, or lying.",
   "active_operation": {
-    "id": "evidence-compliance-control",
-    "name": "Add schema-validated, merge-blocking compliance evidence",
+    "id": "outline-wisdom-model",
+    "name": "Adopt assistant-owned active outlines and selective project wisdom",
     "status": "complete",
-    "inspected_base_commit": "3ea2f061a692f6208ee7e0c0ac6d0067b0bdd06a",
+    "inspected_base_commit": "2bcb166460a4f4b9000067bc583460f14cbdb1b2",
     "resulting_commit": "self"
   },
-  "next_goal": "Use the evidence matrix during the next BADASS recovery or review.",
+  "next_goal": "Use the compact outline and wisdom model during the next BADASS recovery and in active projects.",
   "authoritative_paths": {
     "constitution": "BADASS.md",
     "outline": "control/outline.md",

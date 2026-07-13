@@ -2,7 +2,7 @@
   "$schema": "../schemas/compliance-matrix.schema.json",
   "schema_version": 1,
   "scope": "Baseline BADASS section record. Runtime compliance remains ASK_USER until current direct session evidence supports a different result.",
-  "updated": "2026-07-12",
+  "updated": "2026-07-13",
   "allowed_statuses": [
     "PASS",
     "FAIL",
@@ -163,6 +163,19 @@
         "docs/SECTION-COMPLIANCE-MATRIX.md"
       ],
       "question": "Does current direct session evidence demonstrate compliance with Outlining?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Project Wisdom",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "WISDOM.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Project Wisdom?",
       "remediation": null,
       "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
     },

@@ -36,7 +36,7 @@ The assistant does not edit `BADASS.md` unless The User explicitly grants a spec
 - Names hard fail states and unwanted behavior.
 - Provides a deterministic recovery process after failure.
 - Makes compliance observable rather than assumed.
-- Maintains an inspectable outline, decision record, cull process, and archive.
+- Maintains an inspectable active outline, selective wisdom, decision record, cull process, and archive.
 - Validates repository structure and control coverage automatically.
 
 ## Repository map
@@ -54,7 +54,8 @@ The assistant does not edit `BADASS.md` unless The User explicitly grants a spec
 | `docs/RECOVERY-PROTOCOL.md` | Ordered recovery procedure after a bad-assistant event. |
 | `docs/SECTION-COMPLIANCE-MATRIX.md` | Section-by-section proof of comprehension and compliance. |
 | `docs/REPOSITORY-HEALTH.md` | Repository design, maintenance rules, and current GitHub best-practice basis. |
-| `control/outline.md` | Active reality sandbox and progress record. |
+| `control/outline.md` | Assistant-owned, project-local active working memory. |
+| `WISDOM.md` | Reviewed cross-project operating lessons; subordinate to `BADASS.md`. |
 | `control/inspection-map.json` | User-controlled file groups and operation mappings. |
 | `control/state.json` | Schema-validated state synchronized with the active outline. |
 | `schemas/state.schema.json` | Tracked schema for the state file. |

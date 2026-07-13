@@ -45,7 +45,7 @@ Record:
 - the current best-practice check;
 - the proposed repair.
 
-Do not rewrite the original outline steps. Append the recovery record.
+Update the active outline to the smallest accurate working set needed for recovery. Remove completed or obsolete branches, and point to permanent evidence rather than turning the outline into a recovery diary.
 
 ## 6. Propose the smallest repair
 
