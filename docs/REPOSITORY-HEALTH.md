@@ -10,6 +10,8 @@ This repository is intentionally small, documentation-first, and designed to rea
 - Use deterministic inspection controls rather than assistant-selected relevance.
 - Keep generated state out of Git history.
 - Validate repository structure automatically.
+- Load canonical rules through current native assistant instruction files.
+- Generate a local session-state attestation before work.
 - Preserve simple CLI workflows.
 
 ## GitHub best-practice basis
@@ -57,8 +59,8 @@ python3 scripts/validate_repository.py --refresh
 python3 scripts/validate_repository.py --check
 ```
 
-The GitHub Actions workflow runs the self-test and repository check on pushes and pull requests.
+The GitHub Actions workflow runs validator and session-gate self-tests plus the repository check on pushes and pull requests. The README exposes the live workflow badge.
 
 ## Maintenance rule
 
-Do not add files casually. Every tracked path must be classified by `control/inspection-map.yml`, linked from an appropriate document, and validated before commit.
+Do not add files casually. Every tracked path must be classified by `control/inspection-map.json`, linked from an appropriate document, and validated before commit.

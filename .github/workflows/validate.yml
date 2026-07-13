@@ -10,6 +10,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -18,6 +19,14 @@ jobs:
 
       - name: Self-test validator
         run: python3 scripts/validate_repository.py --self-test
+
+      - name: Self-test session gate
+        run: python3 scripts/session_gate.py --self-test
+
+      - name: Exercise session gate
+        run: |
+          python3 scripts/session_gate.py --start
+          python3 scripts/session_gate.py --check
 
       - name: Validate repository
         run: python3 scripts/validate_repository.py --check

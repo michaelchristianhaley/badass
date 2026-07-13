@@ -17,9 +17,10 @@ import tempfile
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
-MAP_PATH = ROOT / "control" / "inspection-map.yml"
+MAP_PATH = ROOT / "control" / "inspection-map.json"
 INVENTORY_PATH = ROOT / "control" / "file-inventory.csv"
 UNCLASSIFIED_PATH = ROOT / "control" / "unclassified-files.txt"
+VERBATIM_ARCHIVES = {"docs/reviews/2026-07-12-claude-report.txt"}
 
 REQUIRED_BADASS_HEADINGS = [
     "Scope",
@@ -50,6 +51,8 @@ REQUIRED_BADASS_HEADINGS = [
 REQUIRED_PATHS = [
     "BADASS.md",
     "README.md",
+    "CLAUDE.md",
+    "AGENTS.md",
     "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
@@ -59,25 +62,35 @@ REQUIRED_PATHS = [
     ".gitignore",
     ".editorconfig",
     ".github/CODEOWNERS",
+    ".github/copilot-instructions.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/behavior-failure.yml",
     ".github/ISSUE_TEMPLATE/rule-proposal.yml",
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/workflows/validate.yml",
+    "docs/INTEGRATION.md",
+    "docs/QUICK-REFERENCE.md",
     "docs/RECOVERY-PROTOCOL.md",
     "docs/REPOSITORY-HEALTH.md",
     "docs/SECTION-COMPLIANCE-MATRIX.md",
+    "docs/WORKED-EXAMPLE.md",
+    "docs/LICENSE-DECISION-GUIDE.md",
+    "docs/reviews/README.md",
+    "docs/reviews/2026-07-12-claude-report.txt",
+    "docs/reviews/2026-07-12-claude-remediation.md",
     "control/README.md",
-    "control/inspection-map.yml",
+    "control/inspection-map.json",
     "control/outline.md",
     "control/decisions/README.md",
     "control/decisions/0001-repository-purpose.md",
     "control/decisions/0002-badass-authority.md",
     "control/decisions/0003-inspection-controls.md",
     "control/decisions/0004-license-selection.md",
+    "control/decisions/0005-claude-report-remediation.md",
     "control/culls/README.md",
     "control/archive/README.md",
     "scripts/validate_repository.py",
+    "scripts/session_gate.py",
 ]
 
 
@@ -180,7 +193,7 @@ def validate_text_files(files: list[str]) -> None:
             raw = path.read_bytes()
             if b"\r" in raw:
                 raise ValidationError(f"CR or CRLF line ending found: {relative}")
-            if raw and not raw.endswith(b"\n"):
+            if raw and not raw.endswith(b"\n") and relative not in VERBATIM_ARCHIVES:
                 raise ValidationError(f"missing final newline: {relative}")
 
 
@@ -199,10 +212,44 @@ def validate_badass() -> None:
         "The active outline is The Assistant's hard reality sandbox.",
         "Only The User may command a new method.",
         "The Assistant shall treat `BADASS.md` as read-only.",
+        "version: 1.1.0",
+        "last_revised: 2026-07-12",
     ]
     missing_phrases = [phrase for phrase in required_phrases if phrase not in text]
     if missing_phrases:
         raise ValidationError("BADASS.md missing governing phrases: " + ", ".join(missing_phrases))
+
+
+def validate_integrations() -> None:
+    required = {
+        "CLAUDE.md": ["BADASS.md", "scripts/session_gate.py --start"],
+        "AGENTS.md": ["BADASS.md", "scripts/session_gate.py --start"],
+        ".github/copilot-instructions.md": ["BADASS.md", "control/outline.md"],
+        "docs/QUICK-REFERENCE.md": ["does not replace `BADASS.md`", "Do not lie", "Do not Thrash", "Do not Drift"],
+        "docs/INTEGRATION.md": ["Claude Code", "OpenAI Codex", "GitHub Copilot", "ChatGPT Projects"],
+        "docs/WORKED-EXAMPLE.md": ["HARD FAIL", "Compliance matrix excerpt", "Observable difference"],
+    }
+    for relative, phrases in required.items():
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        missing = [phrase for phrase in phrases if phrase not in text]
+        if missing:
+            raise ValidationError(f"{relative} missing required integration phrases: {', '.join(missing)}")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    if "actions/workflows/validate.yml/badge.svg" not in readme:
+        raise ValidationError("README.md missing validation status badge")
+
+    workflow = (ROOT / ".github" / "workflows" / "validate.yml").read_text(encoding="utf-8")
+    workflow_phrases = [
+        "actions/checkout@v7",
+        "scripts/validate_repository.py --self-test",
+        "scripts/session_gate.py --self-test",
+        "scripts/session_gate.py --start",
+        "scripts/session_gate.py --check",
+        "scripts/validate_repository.py --check",
+    ]
+    missing_workflow = [phrase for phrase in workflow_phrases if phrase not in workflow]
+    if missing_workflow:
+        raise ValidationError("validation workflow missing required commands: " + ", ".join(missing_workflow))
 
 
 def validate_matrix() -> None:
@@ -273,6 +320,7 @@ def check_repository(refresh: bool) -> None:
     validate_required_paths(files)
     validate_text_files(files)
     validate_badass()
+    validate_integrations()
     validate_matrix()
     data = load_map()
     unclassified = validate_map(files, data)

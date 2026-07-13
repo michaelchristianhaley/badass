@@ -22,6 +22,9 @@ A current, inspectable repository that can stop a failing assistant, force direc
 - Repository inspection uses a user-controlled map and full-read fallback gates.
 - Generated inventory and unclassified-file reports are local and reproducible.
 - Repository structure is automatically validated.
+- Native Claude Code, Codex, and GitHub Copilot adapters route assistants into BADASS.
+- A session gate generates current local state evidence before work.
+- A non-canonical quick reference and worked recovery example are available.
 - License selection remains a user decision.
 
 ## Current operation
@@ -47,6 +50,9 @@ Repository-health bootstrap.
 - [x] Add repository health and community files.
 - [x] Add automated validation.
 - [ ] The User selects a repository license.
+- [x] Add native assistant integration and session-state verification.
+- [x] Add a one-page quick reference and worked recovery example.
+- [x] Remediate the Claude repository report except the user-owned license decision.
 - [ ] Future operations append verified progress here.
 
 ## Operating notes
@@ -67,3 +73,17 @@ Append future records below. Do not rewrite the original plan.
 - Current-state changes:
 - Failures or unknowns:
 - Next goal:
+
+### 2026-07-12: Claude report remediation
+
+- Operation: Governance review and repository maintenance.
+- Inspected base commit: live `main` containing `BADASS - Claude Report.txt`.
+- Resulting commit: the commit containing this record.
+- User command: Review Claude's report and implement its changes.
+- Best-practice comparison: current official Claude Code `CLAUDE.md`, OpenAI Codex `AGENTS.md`, GitHub Copilot repository instructions, ChatGPT Projects, GitHub Actions checkout v7, and GitHub licensing guidance were checked.
+- Files inspected: every tracked file because the new Claude report was unclassified and the outline was stale.
+- Actions: renamed the JSON inspection map truthfully; added native adapters, integration documentation, quick reference, session gate, worked example, CI badge, remediation record, BADASS version metadata, and narrowed formal-work scope; extended validation and classification.
+- Verified results: validator self-test, session-gate self-test, full repository check, and isolated commit/push smoke test.
+- Current-state changes: BADASS version 1.1.0; inspection map version 2; report moved to `docs/reviews/` without content loss.
+- Failures or unknowns: repository license remains a user-owned open decision.
+- Next goal: The User selects whether and how the repository will be licensed.

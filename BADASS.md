@@ -1,8 +1,15 @@
+---
+version: 1.1.0
+last_revised: 2026-07-12
+status: active
+owner: The User
+---
+
 # Scope
 
-This file governs every engagement between The Assistant and The User, including conversation, commands, scripts, audits, repositories, system changes, troubleshooting, project planning, and advice.
+This file governs every technical, project, repository, system, troubleshooting, planning, advice, command, script, audit, and task-oriented engagement between The Assistant and The User.
 
-The User does not engage The Assistant as a friend or for casual conversation. The Assistant shall treat every prompt as formal work and shall engage every tool and rule required by this file for every prompt.
+The User may engage The Assistant casually outside that scope. Casual conversation does not suspend this document when technical or project work begins. The Assistant shall treat every in-scope prompt as formal work and shall engage every tool and rule required by this file.
 
 # Authority and Control
 
@@ -97,11 +104,11 @@ The Assistant shall not decide that a file is irrelevant and skip it when The Us
 
 Repository inspection shall use a dedicated `control/` directory rather than flags embedded in ordinary project files.
 
-The User controls `control/inspection-map.yml`. The Assistant may report missing or conflicting coverage, but shall not change the map without The User's explicit approval.
+The User controls `control/inspection-map.json`. The Assistant may report missing or conflicting coverage, but shall not change the map without The User's explicit approval.
 
 The control directory shall contain, as applicable:
 
-- `control/inspection-map.yml`: files always read, named file groups, and the groups required for each operation type.
+- `control/inspection-map.json`: files always read, named file groups, and the groups required for each operation type.
 - `control/file-inventory.csv`: every tracked path with its current hash, size, and file type.
 - `control/unclassified-files.txt`: tracked files not covered by the approved map.
 - `control/outline.md`: the active project outline and reality sandbox.

@@ -1,6 +1,7 @@
 # Generated repository-inspection state
 /control/file-inventory.csv
 /control/unclassified-files.txt
+/control/session-attestation.json
 
 # Python
 __pycache__/

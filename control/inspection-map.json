@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "owner": "The User",
   "fallback": {
     "full_repository_read": true,
@@ -13,17 +13,24 @@
   },
   "always_read": [
     "BADASS.md",
+    "docs/QUICK-REFERENCE.md",
     "README.md",
     "control/outline.md",
-    "control/inspection-map.yml",
+    "control/inspection-map.json",
     "docs/SECTION-COMPLIANCE-MATRIX.md"
   ],
   "groups": {
     "governance": [
       "BADASS.md",
       "README.md",
+      "CLAUDE.md",
+      "AGENTS.md",
+      ".github/copilot-instructions.md",
+      "docs/QUICK-REFERENCE.md",
+      "docs/INTEGRATION.md",
       "docs/SECTION-COMPLIANCE-MATRIX.md",
-      "docs/RECOVERY-PROTOCOL.md"
+      "docs/RECOVERY-PROTOCOL.md",
+      "docs/WORKED-EXAMPLE.md"
     ],
     "controls": [
       "control/**"
@@ -42,7 +49,8 @@
       "scripts/**"
     ],
     "decisions": [
-      "control/decisions/**"
+      "control/decisions/**",
+      "docs/LICENSE-DECISION-GUIDE.md"
     ],
     "culls": [
       "control/culls/**",
@@ -56,9 +64,16 @@
       ".github/ISSUE_TEMPLATE/**",
       ".github/PULL_REQUEST_TEMPLATE.md",
       ".github/CODEOWNERS"
+    ],
+    "reviews": [
+      "docs/reviews/**"
     ]
   },
   "operations": {
+    "session_start": [
+      "governance",
+      "controls"
+    ],
     "assistant_recovery": [
       "governance",
       "controls",
@@ -67,12 +82,14 @@
     "governance_review": [
       "governance",
       "controls",
-      "decisions"
+      "decisions",
+      "reviews"
     ],
     "repository_maintenance": [
       "governance",
       "controls",
-      "repository_health"
+      "repository_health",
+      "reviews"
     ],
     "cull": [
       "governance",
@@ -94,6 +111,8 @@
   "classification_patterns": [
     "BADASS.md",
     "README.md",
+    "CLAUDE.md",
+    "AGENTS.md",
     "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",

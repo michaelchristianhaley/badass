@@ -6,8 +6,9 @@ This repository is governed by `BADASS.md` and controlled by The User.
 
 1. Read `BADASS.md`.
 2. Read `control/outline.md`.
-3. Read `control/inspection-map.yml`.
-4. Run `python3 scripts/validate_repository.py --check`.
+3. Read `control/inspection-map.json`.
+4. Run `python3 scripts/session_gate.py --start`.
+5. Run `python3 scripts/validate_repository.py --check`.
 5. State the exact problem and the current direct evidence.
 
 ## BADASS.md changes
@@ -28,7 +29,7 @@ The User decides.
 
 Supporting files may clarify, test, or operationalize `BADASS.md`. They may not weaken it, supersede it, or grant The Assistant more authority.
 
-Every new tracked file must be classified in `control/inspection-map.yml`.
+Every new tracked file must be classified in `control/inspection-map.json`.
 
 ## Pull requests
 

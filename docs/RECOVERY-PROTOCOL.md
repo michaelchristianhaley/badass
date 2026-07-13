@@ -12,7 +12,7 @@ Open directly:
 
 1. `BADASS.md`
 2. `control/outline.md`
-3. `control/inspection-map.yml`
+3. `control/inspection-map.json`
 4. the exact live files, machine state, errors, or authoritative URLs involved
 
 Do not use cached memory as evidence.

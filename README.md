@@ -1,5 +1,7 @@
 # BADASS
 
+[![Validate repository](https://github.com/michaelchristianhaley/badass/actions/workflows/validate.yml/badge.svg)](https://github.com/michaelchristianhaley/badass/actions/workflows/validate.yml)
+
 A recovery and realignment repository for an assistant after it has been a **BAD ASSISTANT**.
 
 `BADASS.md` is the user-owned operating constitution. The rest of this repository helps an assistant prove that it has read the constitution, understood each section, inspected current state, corrected a failure, and returned to useful work without thrashing, drifting, guessing, or lying.
@@ -8,14 +10,17 @@ A recovery and realignment repository for an assistant after it has been a **BAD
 
 After a serious assistant failure:
 
-1. Read [`BADASS.md`](BADASS.md) completely.
-2. Read the active [`control/outline.md`](control/outline.md).
-3. Read [`control/inspection-map.yml`](control/inspection-map.yml).
-4. Use [`docs/RECOVERY-PROTOCOL.md`](docs/RECOVERY-PROTOCOL.md).
-5. Complete the checks in [`docs/SECTION-COMPLIANCE-MATRIX.md`](docs/SECTION-COMPLIANCE-MATRIX.md).
-6. Validate the repository with:
+1. Let the native adapter load: [`CLAUDE.md`](CLAUDE.md), [`AGENTS.md`](AGENTS.md), or [Copilot instructions](.github/copilot-instructions.md).
+2. Read [`BADASS.md`](BADASS.md) completely.
+3. Read [`docs/QUICK-REFERENCE.md`](docs/QUICK-REFERENCE.md).
+4. Read the active [`control/outline.md`](control/outline.md).
+5. Read [`control/inspection-map.json`](control/inspection-map.json).
+6. Use [`docs/RECOVERY-PROTOCOL.md`](docs/RECOVERY-PROTOCOL.md).
+7. Complete the checks in [`docs/SECTION-COMPLIANCE-MATRIX.md`](docs/SECTION-COMPLIANCE-MATRIX.md).
+8. Start the session gate and validate the repository with:
 
 ```bash
+python3 scripts/session_gate.py --start
 python3 scripts/validate_repository.py --check
 ```
 
@@ -35,11 +40,18 @@ The assistant does not edit `BADASS.md` unless The User explicitly grants a spec
 | Path | Purpose |
 |---|---|
 | `BADASS.md` | User-owned governing rules. |
+| `CLAUDE.md` | Claude Code session bootstrap. |
+| `AGENTS.md` | OpenAI Codex and compatible agent bootstrap. |
+| `.github/copilot-instructions.md` | GitHub Copilot repository instructions. |
+| `docs/INTEGRATION.md` | Tool-specific context-loading instructions and limits. |
+| `docs/QUICK-REFERENCE.md` | One-page repeated-session reference; non-canonical. |
+| `docs/WORKED-EXAMPLE.md` | Demonstrated recovery from a realistic HARD FAIL. |
+| `scripts/session_gate.py` | Local session-state attestation and stale-state detection. |
 | `docs/RECOVERY-PROTOCOL.md` | Ordered recovery procedure after a bad-assistant event. |
 | `docs/SECTION-COMPLIANCE-MATRIX.md` | Section-by-section proof of comprehension and compliance. |
 | `docs/REPOSITORY-HEALTH.md` | Repository design, maintenance rules, and current GitHub best-practice basis. |
 | `control/outline.md` | Active reality sandbox and progress record. |
-| `control/inspection-map.yml` | User-controlled file groups and operation mappings. |
+| `control/inspection-map.json` | User-controlled file groups and operation mappings. |
 | `control/decisions/` | Statused decision records. |
 | `control/culls/` | Proposed and approved bad-information culls. |
 | `control/archive/` | Verbatim material removed from active documents after approval. |
@@ -80,6 +92,10 @@ The assistant may inspect, validate, report conflicts, and suggest changes. It m
 ## Contributing and support
 
 Read [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), [`SUPPORT.md`](SUPPORT.md), and [`SECURITY.md`](SECURITY.md).
+
+## Integration
+
+See [`docs/INTEGRATION.md`](docs/INTEGRATION.md) for current ChatGPT, Claude Code, Codex, GitHub Copilot, and generic-assistant setup.
 
 ## License status
 
