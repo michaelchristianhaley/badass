@@ -45,3 +45,16 @@ All notable repository changes are recorded here.
 ### Open decision
 
 - The User has not selected a repository license.
+
+## 2026-07-12 — Remaining live consistency fixes
+
+### Fixed
+
+- corrected the stale `inspection-map.yml` reference in `control/README.md`;
+- pinned `actions/checkout` v7.0.0 to its verified full commit SHA;
+- extended validation so both corrections remain enforced.
+
+### Preserved
+
+- `BADASS.md` was not changed.
+- The license decision remains reserved for The User.

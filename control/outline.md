@@ -87,3 +87,19 @@ Append future records below. Do not rewrite the original plan.
 - Current-state changes: BADASS version 1.1.0; inspection map version 2; report moved to `docs/reviews/` without content loss.
 - Failures or unknowns: repository license remains a user-owned open decision.
 - Next goal: The User selects whether and how the repository will be licensed.
+
+### 2026-07-12 remaining live consistency repair
+
+- Inspected base commit: `451ea65ba2757d588988f62222fc7d2a59b13086`
+- Scope: fix only defects confirmed in the live repository after the Claude-remediation push
+- Confirmed defects:
+  - `control/README.md` still named the removed `inspection-map.yml`
+  - the validation workflow used mutable `actions/checkout@v7`
+  - the validator enforced those stale values instead of the corrected state
+- Changes:
+  - corrected the control index to `inspection-map.json`
+  - pinned `actions/checkout` v7.0.0 to `9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0`
+  - updated the validator to enforce both corrections
+- Validation: validator self-test, session-gate self-test, repository check, Python parse, and Git diff checks passed before commit
+- Preserved: `BADASS.md` unchanged; license decision untouched
+- Next goal: verify the pushed commit and live GitHub files directly

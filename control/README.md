@@ -4,7 +4,7 @@ This directory implements the repository-inspection, outline, decision, cull, an
 
 ## Files
 
-- `inspection-map.yml`: user-controlled inspection scope.
+- `inspection-map.json`: user-controlled inspection scope.
 - `outline.md`: active project reality sandbox.
 - `session-attestation.json`: generated local session-state evidence.
 - `file-inventory.csv`: generated local tracked-file inventory.

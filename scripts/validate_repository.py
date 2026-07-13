@@ -228,19 +228,23 @@ def validate_integrations() -> None:
         "docs/QUICK-REFERENCE.md": ["does not replace `BADASS.md`", "Do not lie", "Do not Thrash", "Do not Drift"],
         "docs/INTEGRATION.md": ["Claude Code", "OpenAI Codex", "GitHub Copilot", "ChatGPT Projects"],
         "docs/WORKED-EXAMPLE.md": ["HARD FAIL", "Compliance matrix excerpt", "Observable difference"],
+        "control/README.md": ["inspection-map.json"],
     }
     for relative, phrases in required.items():
         text = (ROOT / relative).read_text(encoding="utf-8")
         missing = [phrase for phrase in phrases if phrase not in text]
         if missing:
             raise ValidationError(f"{relative} missing required integration phrases: {', '.join(missing)}")
+    control_readme = (ROOT / "control" / "README.md").read_text(encoding="utf-8")
+    if "inspection-map.yml" in control_readme:
+        raise ValidationError("control/README.md contains stale inspection-map.yml reference")
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     if "actions/workflows/validate.yml/badge.svg" not in readme:
         raise ValidationError("README.md missing validation status badge")
 
     workflow = (ROOT / ".github" / "workflows" / "validate.yml").read_text(encoding="utf-8")
     workflow_phrases = [
-        "actions/checkout@v7",
+        "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0",
         "scripts/validate_repository.py --self-test",
         "scripts/session_gate.py --self-test",
         "scripts/session_gate.py --start",
