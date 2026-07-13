@@ -46,7 +46,9 @@
       "SECURITY.md",
       "SUPPORT.md",
       "docs/REPOSITORY-HEALTH.md",
-      "scripts/**"
+      "scripts/**",
+      "LICENSE.md",
+      "LICENSES/**"
     ],
     "decisions": [
       "control/decisions/**",
@@ -124,6 +126,8 @@
     ".github/**",
     "docs/**",
     "control/**",
-    "scripts/**"
+    "scripts/**",
+    "LICENSE.md",
+    "LICENSES/**"
   ]
 }

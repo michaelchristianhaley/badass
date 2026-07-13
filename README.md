@@ -97,6 +97,11 @@ Read [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUC
 
 See [`docs/INTEGRATION.md`](docs/INTEGRATION.md) for current ChatGPT, Claude Code, Codex, GitHub Copilot, and generic-assistant setup.
 
-## License status
+## License
 
-No license has been selected. The decision remains with The User and is recorded in [`control/decisions/0004-license-selection.md`](control/decisions/0004-license-selection.md). A public GitHub repository is viewable, but no reuse license is implied.
+BADASS uses a dual-license structure:
+
+- repository text and non-software content: **CC BY 4.0**;
+- files under `scripts/` and `.github/workflows/`: **MIT**.
+
+See [`LICENSE.md`](LICENSE.md) for the exact boundary and attribution notice.

@@ -1,24 +1,18 @@
-# License Decision Guide
+# License Decision
 
-The Claude report recommends resolving the public repository's license. Only The User may make that legal-permission decision.
+The User accepted the BADASS dual-license structure on 2026-07-12.
 
-## Current state
+- Written standard and repository content: **CC BY 4.0**.
+- Files under `scripts/` and `.github/workflows/`: **MIT**.
 
-Until The User chooses a license, default copyright applies. GitHub explains that a public repository without a license does not grant general permission to reproduce, distribute, or create derivative works beyond GitHub's service terms.
+The authoritative scope statement is [`../LICENSE.md`](../LICENSE.md). The
+repository notices are:
 
-## Practical options
-
-1. **Remain unlicensed.** Maximum retained control; others cannot lawfully reuse the repository as a template without separate permission.
-2. **Creative Commons Attribution 4.0 for documentation.** Allows reuse and adaptation with attribution. Creative Commons recommends software use a software license instead.
-3. **MIT for code and CC BY 4.0 for documentation.** Best fit when the repository is intended as a reusable documentation framework with small supporting scripts.
-4. **Another license selected by The User.** Record the exact license and scope in a new accepted decision record.
-
-## Recommendation
-
-If The User wants broad reuse, use a dual-license structure: CC BY 4.0 for documentation and MIT for scripts. This is a recommendation only and creates no permission until The User explicitly accepts it and the license files are added.
+- [`../LICENSES/CC-BY-4.0.txt`](../LICENSES/CC-BY-4.0.txt)
+- [`../LICENSES/MIT.txt`](../LICENSES/MIT.txt)
 
 Official references:
 
-- <https://docs.github.com/articles/licensing-a-repository>
-- <https://creativecommons.org/chooser/>
-- <https://opensource.org/license/mit>
+- [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
+- [Creative Commons legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)
+- [Open Source Initiative MIT License](https://opensource.org/license/mit)

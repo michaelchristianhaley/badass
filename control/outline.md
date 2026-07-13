@@ -25,7 +25,7 @@ A current, inspectable repository that can stop a failing assistant, force direc
 - Native Claude Code, Codex, and GitHub Copilot adapters route assistants into BADASS.
 - A session gate generates current local state evidence before work.
 - A non-canonical quick reference and worked recovery example are available.
-- License selection remains a user decision.
+- Repository content is licensed CC BY 4.0; scripts and workflow code are licensed MIT.
 
 ## Current operation
 
@@ -49,7 +49,7 @@ Repository-health bootstrap.
 - [x] Add section compliance matrix.
 - [x] Add repository health and community files.
 - [x] Add automated validation.
-- [ ] The User selects a repository license.
+- [x] The User selected CC BY 4.0 for repository content and MIT for scripts and workflow code.
 - [x] Add native assistant integration and session-state verification.
 - [x] Add a one-page quick reference and worked recovery example.
 - [x] Remediate the Claude repository report except the user-owned license decision.
@@ -103,3 +103,14 @@ Append future records below. Do not rewrite the original plan.
 - Validation: validator self-test, session-gate self-test, repository check, Python parse, and Git diff checks passed before commit
 - Preserved: `BADASS.md` unchanged; license decision untouched
 - Next goal: verify the pushed commit and live GitHub files directly
+
+### 2026-07-12 dual-license implementation
+
+- Operation: implement the license decision selected by The User
+- Inspected base commit: `2d47196af5085eb231a1d0d684871e3ba69f4fd2`
+- User command: make number 1 — CC BY 4.0 for text and MIT for scripts
+- Actions: added the license boundary and notices; accepted decision 0004;
+  updated README and license guidance; classified and validated the new files
+- Preserved: `BADASS.md` unchanged
+- Verification: repository checks, Git checks, push, and remote SHA verification
+- Next goal: wait for The User's next BADASS instruction

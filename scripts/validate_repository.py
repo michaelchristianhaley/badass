@@ -58,6 +58,9 @@ REQUIRED_PATHS = [
     "CONTRIBUTING.md",
     "SECURITY.md",
     "SUPPORT.md",
+    "LICENSE.md",
+    "LICENSES/CC-BY-4.0.txt",
+    "LICENSES/MIT.txt",
     ".gitattributes",
     ".gitignore",
     ".editorconfig",
@@ -256,6 +259,54 @@ def validate_integrations() -> None:
         raise ValidationError("validation workflow missing required commands: " + ", ".join(missing_workflow))
 
 
+def validate_licenses() -> None:
+    required = {
+        "LICENSE.md": [
+            "CC BY 4.0",
+            "LICENSES/CC-BY-4.0.txt",
+            "MIT License",
+            "LICENSES/MIT.txt",
+            "scripts/",
+            ".github/workflows/",
+        ],
+        "LICENSES/CC-BY-4.0.txt": [
+            "Creative Commons Attribution 4.0 International",
+            "SPDX-License-Identifier: CC-BY-4.0",
+        ],
+        "LICENSES/MIT.txt": [
+            "MIT License",
+            "Permission is hereby granted, free of charge",
+            "SPDX-License-Identifier: MIT",
+        ],
+        "control/decisions/0004-license-selection.md": [
+            "Status: Accepted",
+            "CC-BY-4.0",
+            "MIT",
+        ],
+        "docs/LICENSE-DECISION-GUIDE.md": [
+            "accepted",
+            "CC BY 4.0",
+            "MIT",
+        ],
+        "README.md": [
+            "## License",
+            "CC BY 4.0",
+            "MIT",
+            "LICENSE.md",
+        ],
+    }
+    for relative, phrases in required.items():
+        value = (ROOT / relative).read_text(encoding="utf-8")
+        missing = [phrase for phrase in phrases if phrase not in value]
+        if missing:
+            raise ValidationError(
+                f"{relative} missing license phrases: {', '.join(missing)}"
+            )
+
+    if "No license has been selected" in (ROOT / "README.md").read_text(encoding="utf-8"):
+        raise ValidationError("README.md still says no license is selected")
+
+
 def validate_matrix() -> None:
     matrix = (ROOT / "docs" / "SECTION-COMPLIANCE-MATRIX.md").read_text(encoding="utf-8")
     missing = [heading for heading in REQUIRED_BADASS_HEADINGS if f"| {heading} |" not in matrix]
@@ -325,6 +376,7 @@ def check_repository(refresh: bool) -> None:
     validate_text_files(files)
     validate_badass()
     validate_integrations()
+    validate_licenses()
     validate_matrix()
     data = load_map()
     unclassified = validate_map(files, data)

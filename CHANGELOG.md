@@ -58,3 +58,21 @@ All notable repository changes are recorded here.
 
 - `BADASS.md` was not changed.
 - The license decision remains reserved for The User.
+
+## 2026-07-12 — Dual-license decision
+
+### Added
+
+- CC BY 4.0 notice for repository content;
+- MIT notice for scripts and GitHub Actions workflow code;
+- explicit license scope and attribution guidance.
+
+### Changed
+
+- license decision 0004 is Accepted;
+- README and license guidance show the selected licenses;
+- validation and inspection coverage require the license files.
+
+### Preserved
+
+- `BADASS.md` was not changed.
