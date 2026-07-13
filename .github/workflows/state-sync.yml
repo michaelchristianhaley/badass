@@ -1,0 +1,30 @@
+name: State sync
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: state-sync-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  state-sync:
+    name: state-sync
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Self-test state control
+        run: python3 scripts/state_sync.py --self-test
+
+      - name: Validate structured state
+        run: python3 scripts/state_sync.py --check

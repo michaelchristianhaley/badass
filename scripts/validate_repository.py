@@ -71,6 +71,7 @@ REQUIRED_PATHS = [
     ".github/ISSUE_TEMPLATE/rule-proposal.yml",
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/workflows/validate.yml",
+    ".github/workflows/state-sync.yml",
     "docs/INTEGRATION.md",
     "docs/QUICK-REFERENCE.md",
     "docs/RECOVERY-PROTOCOL.md",
@@ -83,6 +84,7 @@ REQUIRED_PATHS = [
     "docs/reviews/2026-07-12-claude-remediation.md",
     "control/README.md",
     "control/inspection-map.json",
+    "control/state.json",
     "control/outline.md",
     "control/decisions/README.md",
     "control/decisions/0001-repository-purpose.md",
@@ -94,6 +96,8 @@ REQUIRED_PATHS = [
     "control/archive/README.md",
     "scripts/validate_repository.py",
     "scripts/session_gate.py",
+    "scripts/state_sync.py",
+    "schemas/state.schema.json",
 ]
 
 
@@ -215,8 +219,10 @@ def validate_badass() -> None:
         "The active outline is The Assistant's hard reality sandbox.",
         "Only The User may command a new method.",
         "The Assistant shall treat `BADASS.md` as read-only.",
-        "version: 1.1.0",
+        "version: 1.2.0",
         "last_revised: 2026-07-12",
+        "canonical machine-readable current state",
+        "required `state-sync` check",
     ]
     missing_phrases = [phrase for phrase in required_phrases if phrase not in text]
     if missing_phrases:
@@ -231,7 +237,7 @@ def validate_integrations() -> None:
         "docs/QUICK-REFERENCE.md": ["does not replace `BADASS.md`", "Do not lie", "Do not Thrash", "Do not Drift"],
         "docs/INTEGRATION.md": ["Claude Code", "OpenAI Codex", "GitHub Copilot", "ChatGPT Projects"],
         "docs/WORKED-EXAMPLE.md": ["HARD FAIL", "Compliance matrix excerpt", "Observable difference"],
-        "control/README.md": ["inspection-map.json"],
+        "control/README.md": ["inspection-map.json", "state.json"],
     }
     for relative, phrases in required.items():
         text = (ROOT / relative).read_text(encoding="utf-8")
@@ -257,6 +263,16 @@ def validate_integrations() -> None:
     missing_workflow = [phrase for phrase in workflow_phrases if phrase not in workflow]
     if missing_workflow:
         raise ValidationError("validation workflow missing required commands: " + ", ".join(missing_workflow))
+
+    state_workflow = (ROOT / ".github" / "workflows" / "state-sync.yml").read_text(encoding="utf-8")
+    state_phrases = [
+        "name: state-sync",
+        "scripts/state_sync.py --self-test",
+        "scripts/state_sync.py --check",
+    ]
+    missing_state = [phrase for phrase in state_phrases if phrase not in state_workflow]
+    if missing_state:
+        raise ValidationError("state-sync workflow missing required commands: " + ", ".join(missing_state))
 
 
 def validate_licenses() -> None:
@@ -370,6 +386,19 @@ def write_generated(files: list[str], unclassified: list[str]) -> None:
     )
 
 
+def validate_state_sync() -> None:
+    completed = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "state_sync.py"), "--check"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if completed.returncode != 0:
+        detail = completed.stderr.strip() or completed.stdout.strip()
+        raise ValidationError(f"state-sync failed: {detail}")
+
+
 def check_repository(refresh: bool) -> None:
     files = tracked_files()
     validate_required_paths(files)
@@ -377,6 +406,7 @@ def check_repository(refresh: bool) -> None:
     validate_badass()
     validate_integrations()
     validate_licenses()
+    validate_state_sync()
     validate_matrix()
     data = load_map()
     unclassified = validate_map(files, data)

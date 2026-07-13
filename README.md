@@ -15,12 +15,14 @@ After a serious assistant failure:
 3. Read [`docs/QUICK-REFERENCE.md`](docs/QUICK-REFERENCE.md).
 4. Read the active [`control/outline.md`](control/outline.md).
 5. Read [`control/inspection-map.json`](control/inspection-map.json).
-6. Use [`docs/RECOVERY-PROTOCOL.md`](docs/RECOVERY-PROTOCOL.md).
-7. Complete the checks in [`docs/SECTION-COMPLIANCE-MATRIX.md`](docs/SECTION-COMPLIANCE-MATRIX.md).
-8. Start the session gate and validate the repository with:
+6. Read the schema-validated [`control/state.json`](control/state.json).
+7. Use [`docs/RECOVERY-PROTOCOL.md`](docs/RECOVERY-PROTOCOL.md).
+8. Complete the checks in [`docs/SECTION-COMPLIANCE-MATRIX.md`](docs/SECTION-COMPLIANCE-MATRIX.md).
+9. Start the session gate and validate the repository with:
 
 ```bash
 python3 scripts/session_gate.py --start
+python3 scripts/state_sync.py --check
 python3 scripts/validate_repository.py --check
 ```
 
@@ -52,6 +54,9 @@ The assistant does not edit `BADASS.md` unless The User explicitly grants a spec
 | `docs/REPOSITORY-HEALTH.md` | Repository design, maintenance rules, and current GitHub best-practice basis. |
 | `control/outline.md` | Active reality sandbox and progress record. |
 | `control/inspection-map.json` | User-controlled file groups and operation mappings. |
+| `control/state.json` | Schema-validated state synchronized with the active outline. |
+| `schemas/state.schema.json` | Tracked schema for the state file. |
+| `scripts/state_sync.py` | State/schema and outline synchronization check. |
 | `control/decisions/` | Statused decision records. |
 | `control/culls/` | Proposed and approved bad-information culls. |
 | `control/archive/` | Verbatim material removed from active documents after approval. |

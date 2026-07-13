@@ -1,5 +1,5 @@
 ---
-version: 1.1.0
+version: 1.2.0
 last_revised: 2026-07-12
 status: active
 owner: The User
@@ -109,12 +109,15 @@ The User controls `control/inspection-map.json`. The Assistant may report missin
 The control directory shall contain, as applicable:
 
 - `control/inspection-map.json`: files always read, named file groups, and the groups required for each operation type.
+- `control/state.json`: schema-validated current state synchronized with the active outline.
 - `control/file-inventory.csv`: every tracked path with its current hash, size, and file type.
 - `control/unclassified-files.txt`: tracked files not covered by the approved map.
 - `control/outline.md`: the active project outline and reality sandbox.
 - `control/decisions/`: approved decision records and their statuses.
 - `control/culls/`: proposed and approved cull records.
 - `control/archive/`: verbatim material removed from active documents after approval.
+
+The canonical machine-readable current state is `control/state.json`. It shall validate against `schemas/state.schema.json` and exactly match the fenced state mirror in the active outline. A required `state-sync` check shall reject disagreement before a non-administrative merge.
 
 The active outline is the hard cache of repository inspection. It shall record the inspected commit, current progress, current state, every file previously inspected, and the result of that inspection.
 

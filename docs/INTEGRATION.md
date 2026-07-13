@@ -8,10 +8,11 @@ Every integration shall make the assistant:
 
 1. load or read `BADASS.md`;
 2. read `docs/QUICK-REFERENCE.md`;
-3. read `control/outline.md` and `control/inspection-map.json`;
+3. read `control/outline.md`, `control/inspection-map.json`, and `control/state.json`;
 4. run `python3 scripts/session_gate.py --start` when local repository tools are available;
-5. run `python3 scripts/validate_repository.py --check` before repository changes;
-6. stop when a gate fails.
+5. run `python3 scripts/state_sync.py --check`;
+6. run `python3 scripts/validate_repository.py --check` before repository changes;
+7. stop when a gate fails.
 
 The session gate verifies repository state and produces a local attestation. It cannot prove that an assistant is truthful. The compliance matrix, direct evidence, and The User's review remain necessary.
 
@@ -46,3 +47,11 @@ Use the platform's native project-instruction feature when one exists. Provide t
 ## Verification limits
 
 Native instruction files and session gates improve reliable loading and state verification. They do not make model compliance mathematically enforceable. Claims of compliance still require observable evidence under `docs/SECTION-COMPLIANCE-MATRIX.md`.
+
+## Structured state
+
+`control/state.json` is the canonical machine-readable current state. It must
+validate against `schemas/state.schema.json` and exactly match the fenced JSON
+mirror in `control/outline.md`. The `state-sync` workflow checks this on every
+push and pull request. Branch protection requires the `state-sync` and
+`validate` contexts before non-administrative merges.

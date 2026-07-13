@@ -18,6 +18,7 @@ REQUIRED = [
     "docs/QUICK-REFERENCE.md",
     "control/outline.md",
     "control/inspection-map.json",
+    "control/state.json",
     "docs/SECTION-COMPLIANCE-MATRIX.md",
 ]
 

@@ -17,7 +17,8 @@
     "README.md",
     "control/outline.md",
     "control/inspection-map.json",
-    "docs/SECTION-COMPLIANCE-MATRIX.md"
+    "docs/SECTION-COMPLIANCE-MATRIX.md",
+    "control/state.json"
   ],
   "groups": {
     "governance": [
@@ -48,7 +49,8 @@
       "docs/REPOSITORY-HEALTH.md",
       "scripts/**",
       "LICENSE.md",
-      "LICENSES/**"
+      "LICENSES/**",
+      "schemas/**"
     ],
     "decisions": [
       "control/decisions/**",
@@ -128,6 +130,7 @@
     "control/**",
     "scripts/**",
     "LICENSE.md",
-    "LICENSES/**"
+    "LICENSES/**",
+    "schemas/**"
   ]
 }

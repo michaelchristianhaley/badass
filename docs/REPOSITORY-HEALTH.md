@@ -64,3 +64,11 @@ The GitHub Actions workflow runs validator and session-gate self-tests plus the 
 ## Maintenance rule
 
 Do not add files casually. Every tracked path must be classified by `control/inspection-map.json`, linked from an appropriate document, and validated before commit.
+
+## Structured-state check
+
+The repository tracks `control/state.json` and `schemas/state.schema.json`.
+`scripts/state_sync.py` validates the schema and the exact state mirror in the
+active outline. The independent `state-sync` workflow is a required branch
+status check together with `validate`. Administrator enforcement remains off so
+the repository owner's established direct Termux push workflow still works.

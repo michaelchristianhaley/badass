@@ -76,3 +76,18 @@ All notable repository changes are recorded here.
 ### Preserved
 
 - `BADASS.md` was not changed.
+
+## 2026-07-12 — Structured state control
+
+### Added
+
+- schema-validated `control/state.json`;
+- tracked JSON Schema for repository state;
+- exact state synchronization with the active outline;
+- self-testing state validator and independent `state-sync` workflow;
+- required `validate` and `state-sync` branch contexts.
+
+### Changed
+
+- BADASS version advanced to 1.2.0 to govern structured state.
+- Session attestation and repository validation now include current state.
