@@ -4,6 +4,8 @@ This matrix is a comprehension and recovery instrument for an assistant after it
 
 It does not replace `BADASS.md`. The governing text remains `BADASS.md`. The matrix turns each section into observable checks so The User can distinguish claimed compliance from demonstrated compliance.
 
+The canonical machine-readable record is [`../control/compliance-matrix.json`](../control/compliance-matrix.json). Its schema, section coverage, evidence references, and status semantics are enforced by `scripts/evidence_check.py` and the `evidence-check` workflow.
+
 ## How to use it
 
 For every section, the assistant shall be able to state:
@@ -17,8 +19,8 @@ During recovery, mark each row:
 
 - `PASS`: current evidence demonstrates compliance.
 - `FAIL`: current evidence demonstrates noncompliance.
-- `UNKNOWN`: evidence is insufficient.
-- `NOT APPLICABLE`: the section does not apply to the current operation, with a reason.
+- `ASK_USER`: evidence is insufficient or the result requires The User's judgment.
+- `NOT_APPLICABLE`: the section does not apply to the current operation, with a reason.
 
 A verbal promise is not evidence.
 
@@ -56,9 +58,9 @@ After completing the matrix, the assistant shall provide:
 
 - the inspected `BADASS.md` commit or direct-source identifier;
 - the matrix result for every section;
-- every `FAIL` and `UNKNOWN`;
+- every `FAIL` and `ASK_USER`;
 - the exact repair required;
 - the downstream work that must be reinspected;
 - the outline entry where the recovery was recorded.
 
-The Assistant shall not claim realignment while any applicable row remains `FAIL` or an unexplained `UNKNOWN`.
+The Assistant shall not claim realignment while any applicable row remains `FAIL` or an unresolved `ASK_USER`.

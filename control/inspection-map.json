@@ -18,7 +18,8 @@
     "control/outline.md",
     "control/inspection-map.json",
     "docs/SECTION-COMPLIANCE-MATRIX.md",
-    "control/state.json"
+    "control/state.json",
+    "control/compliance-matrix.json"
   ],
   "groups": {
     "governance": [

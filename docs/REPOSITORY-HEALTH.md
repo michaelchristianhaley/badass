@@ -72,3 +72,13 @@ The repository tracks `control/state.json` and `schemas/state.schema.json`.
 active outline. The independent `state-sync` workflow is a required branch
 status check together with `validate`. Administrator enforcement remains off so
 the repository owner's established direct Termux push workflow still works.
+
+## Evidence check
+
+The repository tracks `control/compliance-matrix.json` and
+`schemas/compliance-matrix.schema.json`. `scripts/evidence_check.py` validates
+the schema, exact BADASS section coverage, evidence paths, and the semantics of
+`PASS`, `FAIL`, `ASK_USER`, and `NOT_APPLICABLE`. The independent
+`evidence-check` workflow is required together with `validate` and `state-sync`.
+Administrator enforcement remains unchanged, preserving The User's established
+direct Termux push workflow.

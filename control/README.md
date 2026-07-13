@@ -6,6 +6,7 @@ This directory implements the repository-inspection, outline, decision, cull, an
 
 - `inspection-map.json`: user-controlled inspection scope.
 - `state.json`: schema-validated current state synchronized with `outline.md`.
+- `compliance-matrix.json`: schema-validated section evidence and `ASK_USER` judgments.
 - `outline.md`: active project reality sandbox and human-readable state mirror.
 - `session-attestation.json`: generated local session-state evidence.
 - `file-inventory.csv`: generated local tracked-file inventory.
@@ -28,6 +29,7 @@ Validate durable state with:
 
 ```bash
 python3 scripts/state_sync.py --check
+python3 scripts/evidence_check.py --check
 ```
 
 Generated files are intentionally ignored by Git and must not be treated as durable history.

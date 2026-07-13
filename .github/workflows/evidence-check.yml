@@ -1,0 +1,30 @@
+name: Evidence check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: evidence-check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evidence-check:
+    name: evidence-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Self-test evidence control
+        run: python3 scripts/evidence_check.py --self-test
+
+      - name: Validate compliance evidence
+        run: python3 scripts/evidence_check.py --check

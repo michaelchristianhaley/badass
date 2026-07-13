@@ -19,6 +19,7 @@ REQUIRED = [
     "control/outline.md",
     "control/inspection-map.json",
     "control/state.json",
+    "control/compliance-matrix.json",
     "docs/SECTION-COMPLIANCE-MATRIX.md",
 ]
 

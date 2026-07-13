@@ -38,7 +38,12 @@
     },
     "status": {
       "type": "string",
-      "enum": ["active", "paused", "blocked", "complete"]
+      "enum": [
+        "active",
+        "paused",
+        "blocked",
+        "complete"
+      ]
     },
     "updated": {
       "type": "string",
@@ -69,7 +74,12 @@
         },
         "status": {
           "type": "string",
-          "enum": ["planned", "in_progress", "blocked", "complete"]
+          "enum": [
+            "planned",
+            "in_progress",
+            "blocked",
+            "complete"
+          ]
         },
         "inspected_base_commit": {
           "type": "string",
@@ -87,7 +97,13 @@
     },
     "authoritative_paths": {
       "type": "object",
-      "required": ["constitution", "outline", "inspection_map", "state"],
+      "required": [
+        "constitution",
+        "outline",
+        "inspection_map",
+        "state",
+        "compliance_matrix"
+      ],
       "additionalProperties": false,
       "properties": {
         "constitution": {
@@ -105,12 +121,19 @@
         "state": {
           "type": "string",
           "const": "control/state.json"
+        },
+        "compliance_matrix": {
+          "type": "string",
+          "const": "control/compliance-matrix.json"
         }
       }
     },
     "license_status": {
       "type": "string",
-      "enum": ["unresolved", "selected"]
+      "enum": [
+        "unresolved",
+        "selected"
+      ]
     },
     "open_user_decisions": {
       "type": "array",
@@ -122,11 +145,15 @@
     },
     "required_checks": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 3,
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "enum": ["validate", "state-sync"]
+        "enum": [
+          "validate",
+          "state-sync",
+          "evidence-check"
+        ]
       }
     }
   }

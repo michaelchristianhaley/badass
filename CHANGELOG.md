@@ -91,3 +91,20 @@ All notable repository changes are recorded here.
 
 - BADASS version advanced to 1.2.0 to govern structured state.
 - Session attestation and repository validation now include current state.
+
+## 2026-07-12 — Evidence compliance control
+
+### Added
+
+- schema-validated `control/compliance-matrix.json`;
+- tracked JSON Schema for compliance evidence;
+- exact BADASS section coverage and repository evidence-path checks;
+- governed `PASS`, `FAIL`, `ASK_USER`, and `NOT_APPLICABLE` semantics;
+- self-testing evidence validator and independent `evidence-check` workflow;
+- required `validate`, `state-sync`, and `evidence-check` branch contexts.
+
+### Changed
+
+- BADASS version advanced to 1.3.0 to govern evidence claims.
+- Session attestation and structured state now include compliance evidence.
+- The human matrix uses `ASK_USER` instead of ambiguous `UNKNOWN`.

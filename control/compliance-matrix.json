@@ -1,0 +1,290 @@
+{
+  "$schema": "../schemas/compliance-matrix.schema.json",
+  "schema_version": 1,
+  "scope": "Baseline BADASS section record. Runtime compliance remains ASK_USER until current direct session evidence supports a different result.",
+  "updated": "2026-07-12",
+  "allowed_statuses": [
+    "PASS",
+    "FAIL",
+    "ASK_USER",
+    "NOT_APPLICABLE"
+  ],
+  "rows": [
+    {
+      "section": "Scope",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Scope?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Authority and Control",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Authority and Control?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Truthfulness and Hard Fail States",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Truthfulness and Hard Fail States?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Instruction Hierarchy",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Instruction Hierarchy?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Readback and Intent",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Readback and Intent?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Recency Research",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Recency Research?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Current State and Source Examination",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Current State and Source Examination?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Repository Inspection Control",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Repository Inspection Control?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Best-Practice Comparison",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Best-Practice Comparison?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Plan Discipline",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Plan Discipline?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Rule Hygiene",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Rule Hygiene?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Git, GitHub, and Persistent Files",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Git, GitHub, and Persistent Files?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Outlining",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Outlining?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "CLI Workflow",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with CLI Workflow?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Script Safety",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Script Safety?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Long Operations",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Long Operations?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Failure Handling",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Failure Handling?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Target Discipline",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Target Discipline?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Destructive Work and Culls",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Destructive Work and Culls?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Directness",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Directness?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "UNWANTED BEHAVIOR: DO NOT DO THESE THINGS",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with UNWANTED BEHAVIOR: DO NOT DO THESE THINGS?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Unwanted Behavior 1: Thrash",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Unwanted Behavior 1: Thrash?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    },
+    {
+      "section": "Unwanted Behavior 2: Drift",
+      "status": "ASK_USER",
+      "claim": "Current assistant compliance with this behavioral section cannot be proven by repository files alone.",
+      "evidence": [
+        "BADASS.md",
+        "docs/SECTION-COMPLIANCE-MATRIX.md"
+      ],
+      "question": "Does current direct session evidence demonstrate compliance with Unwanted Behavior 2: Drift?",
+      "remediation": null,
+      "rationale": "The repository proves the governing rule and evidence format, not the assistant's current session behavior."
+    }
+  ]
+}

@@ -72,6 +72,7 @@ REQUIRED_PATHS = [
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/workflows/validate.yml",
     ".github/workflows/state-sync.yml",
+    ".github/workflows/evidence-check.yml",
     "docs/INTEGRATION.md",
     "docs/QUICK-REFERENCE.md",
     "docs/RECOVERY-PROTOCOL.md",
@@ -85,6 +86,7 @@ REQUIRED_PATHS = [
     "control/README.md",
     "control/inspection-map.json",
     "control/state.json",
+    "control/compliance-matrix.json",
     "control/outline.md",
     "control/decisions/README.md",
     "control/decisions/0001-repository-purpose.md",
@@ -97,7 +99,9 @@ REQUIRED_PATHS = [
     "scripts/validate_repository.py",
     "scripts/session_gate.py",
     "scripts/state_sync.py",
+    "scripts/evidence_check.py",
     "schemas/state.schema.json",
+    "schemas/compliance-matrix.schema.json",
 ]
 
 
@@ -219,10 +223,13 @@ def validate_badass() -> None:
         "The active outline is The Assistant's hard reality sandbox.",
         "Only The User may command a new method.",
         "The Assistant shall treat `BADASS.md` as read-only.",
-        "version: 1.2.0",
+        "version: 1.3.0",
         "last_revised: 2026-07-12",
         "canonical machine-readable current state",
         "required `state-sync` check",
+        "canonical machine-readable compliance record",
+        "shall use `ASK_USER`",
+        "required `evidence-check`",
     ]
     missing_phrases = [phrase for phrase in required_phrases if phrase not in text]
     if missing_phrases:
@@ -237,7 +244,7 @@ def validate_integrations() -> None:
         "docs/QUICK-REFERENCE.md": ["does not replace `BADASS.md`", "Do not lie", "Do not Thrash", "Do not Drift"],
         "docs/INTEGRATION.md": ["Claude Code", "OpenAI Codex", "GitHub Copilot", "ChatGPT Projects"],
         "docs/WORKED-EXAMPLE.md": ["HARD FAIL", "Compliance matrix excerpt", "Observable difference"],
-        "control/README.md": ["inspection-map.json", "state.json"],
+        "control/README.md": ["inspection-map.json", "state.json", "compliance-matrix.json"],
     }
     for relative, phrases in required.items():
         text = (ROOT / relative).read_text(encoding="utf-8")
@@ -273,6 +280,16 @@ def validate_integrations() -> None:
     missing_state = [phrase for phrase in state_phrases if phrase not in state_workflow]
     if missing_state:
         raise ValidationError("state-sync workflow missing required commands: " + ", ".join(missing_state))
+
+    evidence_workflow = (ROOT / ".github" / "workflows" / "evidence-check.yml").read_text(encoding="utf-8")
+    evidence_phrases = [
+        "name: evidence-check",
+        "scripts/evidence_check.py --self-test",
+        "scripts/evidence_check.py --check",
+    ]
+    missing_evidence = [phrase for phrase in evidence_phrases if phrase not in evidence_workflow]
+    if missing_evidence:
+        raise ValidationError("evidence-check workflow missing required commands: " + ", ".join(missing_evidence))
 
 
 def validate_licenses() -> None:
@@ -399,6 +416,19 @@ def validate_state_sync() -> None:
         raise ValidationError(f"state-sync failed: {detail}")
 
 
+def validate_evidence_check() -> None:
+    completed = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "evidence_check.py"), "--check"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if completed.returncode != 0:
+        detail = completed.stderr.strip() or completed.stdout.strip()
+        raise ValidationError(f"evidence-check failed: {detail}")
+
+
 def check_repository(refresh: bool) -> None:
     files = tracked_files()
     validate_required_paths(files)
@@ -407,6 +437,7 @@ def check_repository(refresh: bool) -> None:
     validate_integrations()
     validate_licenses()
     validate_state_sync()
+    validate_evidence_check()
     validate_matrix()
     data = load_map()
     unclassified = validate_map(files, data)

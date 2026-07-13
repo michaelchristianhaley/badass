@@ -8,11 +8,12 @@ Every integration shall make the assistant:
 
 1. load or read `BADASS.md`;
 2. read `docs/QUICK-REFERENCE.md`;
-3. read `control/outline.md`, `control/inspection-map.json`, and `control/state.json`;
+3. read `control/outline.md`, `control/inspection-map.json`, `control/state.json`, and `control/compliance-matrix.json`;
 4. run `python3 scripts/session_gate.py --start` when local repository tools are available;
 5. run `python3 scripts/state_sync.py --check`;
-6. run `python3 scripts/validate_repository.py --check` before repository changes;
-7. stop when a gate fails.
+6. run `python3 scripts/evidence_check.py --check`;
+7. run `python3 scripts/validate_repository.py --check` before repository changes;
+8. stop when a gate fails.
 
 The session gate verifies repository state and produces a local attestation. It cannot prove that an assistant is truthful. The compliance matrix, direct evidence, and The User's review remain necessary.
 
@@ -55,3 +56,12 @@ validate against `schemas/state.schema.json` and exactly match the fenced JSON
 mirror in `control/outline.md`. The `state-sync` workflow checks this on every
 push and pull request. Branch protection requires the `state-sync` and
 `validate` contexts before non-administrative merges.
+
+## Compliance evidence
+
+`control/compliance-matrix.json` is the canonical machine-readable compliance
+record. `scripts/evidence_check.py` validates the tracked schema, requires one
+row for every governed BADASS section, verifies repository evidence paths, and
+rejects unsupported `PASS` claims. Insufficient evidence or user-owned judgment
+must remain `ASK_USER`. The independent `evidence-check` workflow runs on every
+push and pull request and is a required non-administrative merge check.

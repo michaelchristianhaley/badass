@@ -25,6 +25,7 @@ A current, inspectable repository that can stop a failing assistant, force direc
 - Native Claude Code, Codex, and GitHub Copilot adapters route assistants into BADASS.
 - A session gate generates current local state evidence before work.
 - `control/state.json` provides schema-validated state synchronized with this outline.
+- `control/compliance-matrix.json` records schema-validated evidence and user-judgment gates for every BADASS section.
 - A non-canonical quick reference and worked recovery example are available.
 - Repository content is licensed CC BY 4.0; scripts and workflow code are licensed MIT.
 
@@ -53,6 +54,7 @@ Repository-health bootstrap.
 - [x] The User selected CC BY 4.0 for repository content and MIT for scripts and workflow code.
 - [x] Add native assistant integration and session-state verification.
 - [x] Add schema-validated, merge-blocking structured state.
+- [x] Add schema-validated, merge-blocking compliance evidence.
 - [x] Add a one-page quick reference and worked recovery example.
 - [x] Remediate the Claude repository report except the user-owned license decision.
 - [ ] Future operations append verified progress here.
@@ -150,25 +152,49 @@ Append future records below. Do not rewrite the original plan.
   "updated": "2026-07-12",
   "current_end_goal": "A current, inspectable repository that can stop a failing assistant, force direct rereading and evidence, identify the violated rules, repair downstream damage, and return the assistant to the user's actual project without Thrash, Drift, guessing, or lying.",
   "active_operation": {
-    "id": "structured-state-control",
-    "name": "Add schema-validated, merge-blocking repository state",
+    "id": "evidence-compliance-control",
+    "name": "Add schema-validated, merge-blocking compliance evidence",
     "status": "complete",
-    "inspected_base_commit": "6fe3d8ff415cd3b98d6f2ec7939220f9b1a24977",
+    "inspected_base_commit": "3ea2f061a692f6208ee7e0c0ac6d0067b0bdd06a",
     "resulting_commit": "self"
   },
-  "next_goal": "Continue only when The User directs the next BADASS operation.",
+  "next_goal": "Use the evidence matrix during the next BADASS recovery or review.",
   "authoritative_paths": {
     "constitution": "BADASS.md",
     "outline": "control/outline.md",
     "inspection_map": "control/inspection-map.json",
-    "state": "control/state.json"
+    "state": "control/state.json",
+    "compliance_matrix": "control/compliance-matrix.json"
   },
   "license_status": "selected",
   "open_user_decisions": [],
   "required_checks": [
     "validate",
-    "state-sync"
+    "state-sync",
+    "evidence-check"
   ]
 }
 ```
 <!-- BADASS-STATE:END -->
+
+### 2026-07-12 evidence compliance control
+
+- Operation: add schema-validated, merge-blocking compliance evidence.
+- Inspected base commit: `3ea2f061a692f6208ee7e0c0ac6d0067b0bdd06a`
+- Resulting commit: the commit containing this record and `control/compliance-matrix.json`.
+- User command: implement item 3 from the external review.
+- Best-practice comparison: JSON Schema Draft 2020-12 and GitHub required-status-check guidance were reviewed.
+- Actions:
+  - added `control/compliance-matrix.json` and its tracked schema;
+  - added exact `PASS`, `FAIL`, `ASK_USER`, and `NOT_APPLICABLE` semantics;
+  - initialized every behavioral row as `ASK_USER` rather than claiming unproved compliance;
+  - added the self-testing `scripts/evidence_check.py` validator;
+  - added the independent `evidence-check` workflow;
+  - added `evidence-check` to structured state and required branch contexts;
+  - updated session attestation, inspection coverage, documentation, and repository validation.
+- Verified results: schema self-test, evidence semantics, exact BADASS section coverage,
+  state synchronization, session gate, repository validation, workflow runs,
+  remote SHA, and required contexts are checked by the deployment script.
+- Current-state changes: BADASS version 1.3.0; compliance evidence is now tracked and enforced.
+- Failures or unknowns: all live behavioral judgments remain `ASK_USER` until direct session evidence exists.
+- Next goal: use the evidence matrix during the next BADASS recovery or review.
